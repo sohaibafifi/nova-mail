@@ -29,6 +29,9 @@ class NovaSentMail extends Resource
      */
     public static $title = 'id';
 
+    public static $globallySearchable = false;
+
+
     /**
      * The columns that should be searched.
      *
@@ -50,15 +53,15 @@ class NovaSentMail extends Resource
     {
         return [
             MorphTo::make('mailable')->hideFromIndex(),
-            BelongsTo::make('Sender', 'sender', User::class),
-            Text::make('Subject'),
-            BelongsTo::make('Template', 'mailTemplate', NovaMailTemplate::class),
-            Textarea::make('Content')
+            BelongsTo::make(__('Sender'), 'sender', User::class),
+            Text::make(__('Subject'), 'subject'),
+            BelongsTo::make('Template', 'mailTemplate', NovaMailTemplate::class)->required()->rule(['required']),
+            Textarea::make(__('Content'), 'content')
                 ->displayUsing(function ($content) {
                     return trim(strip_tags($content));
                 })
                 ->alwaysShow(),
-            DateTime::make('Sent At', 'created_at')->format('M/d/Y h:mm:ss a'),
+            DateTime::make(__('Sent At'), 'created_at')->format('M/d/Y h:mm:ss a'),
         ];
     }
 

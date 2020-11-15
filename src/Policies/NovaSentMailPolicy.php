@@ -20,7 +20,7 @@ class NovaSentMailPolicy
      */
     public function view(User $user, NovaSentMail $mail)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -58,7 +58,7 @@ class NovaSentMailPolicy
      */
     public function delete(User $user, NovaSentMail $mail)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -84,6 +84,6 @@ class NovaSentMailPolicy
      */
     public function forceDelete(User $user, NovaSentMail $mail)
     {
-        return true;
+        return false;
     }
 }

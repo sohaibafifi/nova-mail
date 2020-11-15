@@ -25,6 +25,8 @@ class NovaMailEvent extends Resource
      */
     public static $title = 'model';
 
+    public static $globallySearchable = false;
+
     /**
      * The columns that should be searched.
      *
