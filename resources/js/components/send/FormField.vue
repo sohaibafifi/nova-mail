@@ -16,6 +16,7 @@
             v-model="selectedTemplate"
             class="form-control form-select mb-4"
             v-if="hasTemplates"
+            required
           >
             <option value disabled="disabled">Select Mail Template&hellip;</option>
 

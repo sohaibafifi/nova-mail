@@ -55,7 +55,9 @@ class NovaSentMail extends Resource
             MorphTo::make('mailable')->hideFromIndex(),
             BelongsTo::make(__('Sender'), 'sender', User::class),
             Text::make(__('Subject'), 'subject'),
-            BelongsTo::make('Template', 'mailTemplate', NovaMailTemplate::class)->required()->rule(['required']),
+            BelongsTo::make('Template', 'mailTemplate', NovaMailTemplate::class)
+                ->required()->rule(['required'])
+                ->nullable(false),
             Textarea::make(__('Content'), 'content')
                 ->displayUsing(function ($content) {
                     return trim(strip_tags($content));
